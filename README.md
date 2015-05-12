@@ -1,4 +1,4 @@
-# Shell-lexer
+# Lexer/Parser
 
 ## Tokens
 
