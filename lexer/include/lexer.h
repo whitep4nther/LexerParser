@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 00:02:22 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/12 02:18:46 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/12 22:54:06 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 // LOL
 #include <stdio.h>
+# include <stdlib.h>
 
 # include "libft.h"
-# include <stdlib.h>
+# include "token.h"
 
 # define NB_STATE_FLOWS 6
 
@@ -43,29 +44,12 @@ typedef enum			e_char_cat
 	CHAR_NUM
 }						t_char_cat;
 
-typedef enum			e_tk_type
-{
-	TK_DEFAULT,
-	TK_CMD_ARG,
-	TK_CMD_SEPARATOR,
-	TK_AND_OPERATOR,
-	TK_SUBCOMMAND
-}						t_tk_type;
-
 typedef struct			s_state
 {
 	int					id;
 	struct s_state		*prev;
 	struct s_state		*next;
 }						t_state;
-
-typedef struct			s_token
-{
-	char				*value;
-	int					type;
-	struct s_token		*prev;
-	struct s_token		*next;
-}						t_token;
 
 typedef t_token*		(*t_state_flow)(char, t_char_cat, t_lexer *);
 
@@ -117,8 +101,5 @@ t_token					*e_unclosed_parenthesis(t_lexer *lexer);
 t_state					*new_state_list(t_estate state);
 void					pop_state_list(t_state **state_list);
 void					push_state_list(t_state *state, t_state **state_list);
-
-t_token					*new_token_list(char *value, int type);
-void					push_token_list(t_token *token, t_token **tk_list);
 
 #endif

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   new_token_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/11 00:31:49 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/11 00:39:47 by ihermell         ###   ########.fr       */
+/*   Created: 2015/05/11 23:52:48 by ihermell          #+#    #+#             */
+/*   Updated: 2015/05/12 22:55:51 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-int main (void)
-{
-	char *s1 = "Hello";
-	char **s2 = &s1;
-	char *tmp = *s2;;
 
-	write(1, "Hey", 3);
-	while (**s2)
-	{
-		write(1, s1, 1);
-		(*s2)++;
-	}
-	return (0);
+#include "token.h"
+
+t_token				*new_token_list(char *value, t_tk_type type)
+{
+	t_token			*tk;
+
+	tk = (t_token*)malloc(sizeof(t_token));
+	tk->value = value;
+	tk->type = type;
+	tk->prev = NULL;
+	tk->next = NULL;
+	return (tk);
 }

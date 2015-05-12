@@ -6,7 +6,7 @@
 #    By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/03 22:55:20 by ihermell          #+#    #+#              #
-#    Updated: 2015/05/12 02:06:48 by ihermell         ###   ########.fr        #
+#    Updated: 2015/05/12 22:54:54 by ihermell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,8 @@ SRC_NAME	= main.c \
 			  token/pop_token.c \
 			  token/push_to_token.c \
 			  token/clear_token.c \
-			  token/list/push_token_list.c \
-			  token/list/new_token_list.c \
+			  ../token/push_token_list.c \
+			  ../token/new_token_list.c \
 			  \
 			  state_flows/default_state_flow.c \
 			  state_flows/cmd_arg_state_flow.c \
@@ -69,6 +69,7 @@ LIBFT		= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
 
 INC_DIR		= -I $(addprefix $(LIBFT_DIR), include/) \
 			  -I include/ \
+			  -I ../token/include
 
 LIBRARIES	= -L $(LIBFT_DIR) -lft
 
