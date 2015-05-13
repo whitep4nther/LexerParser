@@ -8,15 +8,13 @@ t_tree		*parser(t_token *tk_list)
 
 	tree = NULL;
 	tmp = tk_list;
+	tk_list = tk_list->next;
 	sub_tk = divide_token_list(&tk_list);
+	tree = new_tree(ft_strdup(tk_list->value));
+	join_trees(&tree, new_tree(sub_tk[0]->value), LEFT);
+	join_trees(&tree, new_tree(sub_tk[1]->value), RIGHT);
+	print_tree(tree, INFIXE);
 	free_token_list(&tk_list);
-	tree = new_tree("PARENT");
-	join_trees(&tree, new_tree("L"), LEFT);
-	join_trees(&tree, new_tree("R"), RIGHT);
-	join_trees(&tree->tr_left, new_tree("LL"), LEFT);
-	join_trees(&tree->tr_left, new_tree("LR"), RIGHT);
-	print_tree(tree, SUFIXE);
-//	ft_putendl(tree->tr_right->cmd);
 	(void)tree;
 	return (NULL);
 }

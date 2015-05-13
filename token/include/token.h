@@ -36,6 +36,7 @@ typedef struct			s_token
 t_token					*new_token_list(char *value, t_tk_type type);
 void					push_token_list(t_token *token, t_token **tk_list);
 void					push_back_token_list(t_token *token, t_token **tk_list);
+void					print_token_list(t_token *tk);
 t_token					**divide_token_list(t_token **tk_list);
 void					free_token_list(t_token **tk_list);
 

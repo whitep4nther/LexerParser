@@ -44,9 +44,10 @@ SRC_NAME_LEX = lexer.c \
 			  token/pop_token.c \
 			  token/push_to_token.c \
 			  token/clear_token.c \
+			  ../token/new_token_list.c \
 			  ../token/push_token_list.c \
 			  ../token/push_back_token_list.c \
-			  ../token/new_token_list.c \
+			  ../token/print_token_list.c \
 			  ../token/divide_token_list.c \
 			  ../token/free_token_list.c \
 			  \
