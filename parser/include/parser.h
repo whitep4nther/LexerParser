@@ -3,6 +3,11 @@
 
 # include <libft.h>
 # include <stdlib.h>
+# include <token.h>
+# include <stdio.h>//////////////
+
+# define LEFT	0
+# define RIGHT	1
 
 typedef struct	s_tree
 {
@@ -11,6 +16,6 @@ typedef struct	s_tree
 	struct s_tree	*tr_right;
 }				t_tree;
 
-void	parser(void);
+void	parser(t_token *tk_list);
 
 #endif

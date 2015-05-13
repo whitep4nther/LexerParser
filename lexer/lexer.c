@@ -23,11 +23,5 @@ t_token			*lex(char *str)
 	lexer = init_lexer(str);
 	while ((token = next_token(str, lexer)) != NULL)
 		push_token_list(token, &tk_list);
-	while (tk_list)
-	{
-		printf("tk/ %s\n", tk_list->value);
-		printf("    type: %d\n", tk_list->type);
-		tk_list = tk_list->next;
-	}	
 	return (tk_list);
 }

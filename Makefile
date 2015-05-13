@@ -45,7 +45,10 @@ SRC_NAME_LEX = lexer.c \
 			  token/push_to_token.c \
 			  token/clear_token.c \
 			  ../token/push_token_list.c \
+			  ../token/push_back_token_list.c \
 			  ../token/new_token_list.c \
+			  ../token/divide_token_list.c \
+			  ../token/free_token_list.c \
 			  \
 			  state_flows/default_state_flow.c \
 			  state_flows/cmd_arg_state_flow.c \
@@ -65,7 +68,7 @@ SRC_PAR		= $(addprefix $(SRC_DIR_PAR), $(SRC_NAME_PAR))
 
 SRC			= $(SRC_LEX)
 SRC			+= $(SRC_PAR)
-SRC			+= main_nique_ta_mere_ici_on_a_la_liason_des_deux_biiiatch.c
+SRC			+= main.c
 
 OBJ_DIR		= obj/
 OBJ_NAME	= $(SRC_NAME_LEX:.c=.o)
