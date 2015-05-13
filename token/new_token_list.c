@@ -17,8 +17,8 @@ t_token				*new_token_list(char *value, t_tk_type type)
 {
 	t_token			*tk;
 
-	tk = (t_token*)malloc(sizeof(t_token));
-	tk->value = ft_strdup(value);
+	tk = (t_token *)malloc(sizeof(t_token));
+	tk->value = value;
 	tk->type = type;
 	tk->prev = NULL;
 	tk->next = NULL;

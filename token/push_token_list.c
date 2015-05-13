@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "token.h"
+#include <libft.h>
 
 void			push_token_list(t_token *token, t_token **tk_list)
 {
