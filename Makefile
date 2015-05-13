@@ -61,7 +61,10 @@ SRC_NAME_LEX = lexer.c \
 			  errors/e_unclosed_quote.c \
 			  errors/e_unclosed_parenthesis.c
 
-SRC_NAME_PAR = parser.c
+SRC_NAME_PAR = parser.c \
+			   tree/new_tree.c \
+			   tree/join_trees.c \
+			   tree/print_tree.c
 
 SRC_LEX		= $(addprefix $(SRC_DIR_LEX),$(SRC_NAME_LEX))
 SRC_PAR		= $(addprefix $(SRC_DIR_PAR), $(SRC_NAME_PAR))
