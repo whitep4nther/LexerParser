@@ -29,6 +29,5 @@ t_token			*lex(char *str)
 		printf("    type: %d\n", tk_list->type);
 		tk_list = tk_list->next;
 	}	
-	(void)tk_list;
-	return (NULL);
+	return (tk_list);
 }

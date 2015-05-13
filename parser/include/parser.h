@@ -11,4 +11,6 @@ typedef struct	s_tree
 	struct s_tree	*tr_right;
 }				t_tree;
 
+void	parser(void);
+
 #endif

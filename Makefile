@@ -22,8 +22,7 @@ EXT_SRC		=
 SRC_DIR_LEX	= lexer/
 SRC_DIR_PAR	= parser/
 
-SRC_NAME_LEX = main.c \
-			  lexer.c \
+SRC_NAME_LEX = lexer.c \
 			  init_lexer.c \
 			  next_token.c \
 			  char_to_category.c \
@@ -66,6 +65,7 @@ SRC_PAR		= $(addprefix $(SRC_DIR_PAR), $(SRC_NAME_PAR))
 
 SRC			= $(SRC_LEX)
 SRC			+= $(SRC_PAR)
+SRC			+= main_nique_ta_mere_ici_on_a_la_liason_des_deux_biiiatch.c
 
 OBJ_DIR		= obj/
 OBJ_NAME	= $(SRC_NAME_LEX:.c=.o)
@@ -75,9 +75,10 @@ LIBFT_DIR	= Libft/
 LIBFT_NAME	= libft.a
 LIBFT		= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
 
-INC_DIR		= -I $(addprefix $(LIBFT_DIR), include/) \
+INC_DIR		= -I . \
+			  -I $(addprefix $(LIBFT_DIR), include/) \
 			  -I $(addprefix lexer/, include/) \
-			  -I $(addprefix lexer/, ../token/include) \
+			  -I $(addprefix lexer/, ../token/include/) \
 			  -I $(addprefix parser/, include/)
 
 LIBRARIES	= -L $(LIBFT_DIR) -lft
@@ -91,6 +92,7 @@ $(NAME): $(LIBFT) $(SRC) $(EXT_SRC)
 	@echo "LEX."
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@echo $<
 	@mkdir $(OBJ_PATH) 2> /dev/null
 	$(CC) $(CFLAGS) $(INC_DIR) -o $@ -c $<;
 	@mkdir $(OBJ_PATH) 2> /dev/null || echo '' > /dev/null
