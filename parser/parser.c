@@ -27,20 +27,21 @@ static void	parse_rec(t_tree **tree, t_token *tk_list)
 			tk_list = tk_list->next;
 		sub_tk = divide_token_list(&tk_list);
 
-		*tree = new_tree(ft_strdup(tk_list->value));
-		if (only_type_one(tk_list))
-		{
-			tk_list = tk_list->next;
-			while (tk_list)
-			{
-				(*tree)->cmd = ft_strjoin((*tree)->cmd, tk_list->value);
-				tk_list = tk_list->next;
-			}
-		}
-		if (sub_tk[0])
-			join_trees(tree, new_tree(sub_tk[0]->value), LEFT);
-		if (sub_tk[1])
-			join_trees(tree, new_tree(sub_tk[1]->value), RIGHT);
+		*tree = new_tree(new_token_list(tk_list->value, tk_list->type));
+		(void)only_type_one;
+//		if (only_type_one(tk_list))
+//		{
+//			tk_list = tk_list->next;
+//			while (tk_list)
+//			{
+//				(*tree)->cmd = ft_strjoin((*tree)->cmd, tk_list->value);
+//				tk_list = tk_list->next;
+//			}
+//		}
+		//if (sub_tk[0])
+		//	join_trees(tree, new_tree(sub_tk[0]->value), LEFT);
+	//	if (sub_tk[1])
+//			join_trees(tree, new_tree(sub_tk[1]->value), RIGHT);
 		parse_rec(&(*tree)->tr_left, sub_tk[0]);
 		parse_rec(&(*tree)->tr_right, sub_tk[1]);
 	}
@@ -51,12 +52,13 @@ t_tree		*parser(t_token *tk_list)
 	t_tree		*tree;
 
 	tree = NULL;
+	dprintf(1, "%s\n", "---print de la listes des tokens---");
 	print_token_list(tk_list);
 	dprintf(1, "%s\n", "");
 	parse_rec(&tree, tk_list);
 
-	print_tree(tree, POSTFIXE);
+	dprintf(1, "%s\n", "---print de l'arbre---");
+	print_tree(tree, SUFIXE);
 	free_token_list(&tk_list);
-	(void)tree;
-	return (NULL);
+	return (tree);
 }

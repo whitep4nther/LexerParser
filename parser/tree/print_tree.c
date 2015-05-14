@@ -7,7 +7,7 @@ static void		infixe(t_tree *tree)
 	{
 		infixe(tree->tr_left);
 		infixe(tree->tr_right);
-		ft_putendl(tree->cmd);
+		print_token_list(tree->tk);
 	}
 }
 
@@ -16,7 +16,7 @@ static void		sufixe(t_tree *tree)
 	if (tree)
 	{
 		sufixe(tree->tr_left);
-		ft_putendl(tree->cmd);
+		print_token_list(tree->tk);
 		sufixe(tree->tr_right);
 	}
 }
@@ -25,7 +25,7 @@ static void		postfixe(t_tree *tree)
 {
 	if (tree)
 	{
-		ft_putendl(tree->cmd);
+		print_token_list(tree->tk);
 		postfixe(tree->tr_left);
 		postfixe(tree->tr_right);
 	}

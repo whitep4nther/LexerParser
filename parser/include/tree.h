@@ -2,6 +2,7 @@
 # define TREE_H
 
 # include <libft.h>
+# include <token.h>
 # include <stdio.h>/////
 
 # define T_LEFT		0
@@ -13,12 +14,12 @@
 
 typedef struct	s_tree
 {
-	char			*cmd;
+	t_token			*tk;
 	struct s_tree	*tr_left;
 	struct s_tree	*tr_right;
 }				t_tree;
 
-t_tree		*new_tree(char *cmd);
+t_tree		*new_tree(t_token *tk);
 void		join_trees(t_tree **parent, t_tree *child, int away);
 void		print_tree(t_tree *tree, int mode);
 
