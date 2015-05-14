@@ -8,6 +8,7 @@ static void		infixe(t_tree *tree)
 		infixe(tree->tr_left);
 		infixe(tree->tr_right);
 		print_token_list(tree->tk);
+		dprintf(1, "%s\n", "---");
 	}
 }
 
@@ -17,6 +18,7 @@ static void		sufixe(t_tree *tree)
 	{
 		sufixe(tree->tr_left);
 		print_token_list(tree->tk);
+		dprintf(1, "%s\n", "---");
 		sufixe(tree->tr_right);
 	}
 }
@@ -26,6 +28,7 @@ static void		postfixe(t_tree *tree)
 	if (tree)
 	{
 		print_token_list(tree->tk);
+		dprintf(1, "%s\n", "---");
 		postfixe(tree->tr_left);
 		postfixe(tree->tr_right);
 	}
