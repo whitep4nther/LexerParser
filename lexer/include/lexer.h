@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 00:02:22 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/12 22:54:06 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/16 13:14:56 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "libft.h"
 # include "token.h"
 
-# define NB_STATE_FLOWS 6
+# define NB_STATE_FLOWS 7
 
 struct					s_lexer;
 typedef struct			s_lexer t_lexer;
@@ -31,6 +31,7 @@ typedef enum			e_estate
 	STATE_INHB_CMD_ARG,
 	STATE_CMD_ARG,
 	STATE_AND_OPERATOR,
+	STATE_OR_OPERATOR,
 	STATE_SUBCOMMAND,
 	STATE_BACKSLASH
 }						t_estate;
@@ -92,6 +93,7 @@ t_token					*cmd_arg_state_flow(char c, t_char_cat cat, t_lexer *lexer);
 t_token					*inhb_cmd_arg_state_flow(char c, t_char_cat cat, t_lexer *lexer);
 t_token					*backslash_state_flow(char c, t_char_cat cat, t_lexer *lexer);
 t_token					*and_operator_state_flow(char c, t_char_cat cat, t_lexer *lexer);
+t_token					*or_operator_state_flow(char c, t_char_cat cat, t_lexer *lexer);
 t_token					*subcommand_state_flow(char c, t_char_cat cat, t_lexer *lexer);
 
 t_token					*e_syntax_error(t_lexer *lexer);

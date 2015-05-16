@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_token_list.c                                  :+:      :+:    :+:   */
+/*   token_to_priority.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/16 12:21:23 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/16 12:22:51 by ihermell         ###   ########.fr       */
+/*   Created: 2015/05/16 12:10:01 by ihermell          #+#    #+#             */
+/*   Updated: 2015/05/16 13:14:53 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <token.h>
 
-void			free_token_list(t_token *tk_list)
+int			token_to_priority(t_token *token)
 {
-	t_token		*tmp;
-	
-	while (tk_list)
-	{
-		tmp = tk_list->next;
-		free(tk_list->value);
-		free(tk_list);
-		tk_list = tmp;
-	}
+	if (token->type == TK_CMD_SEPARATOR)
+		return (3);
+	else if (token->type == TK_AND_OPERATOR)
+		return (2);
+	else if (token->type == TK_OR_OPERATOR)
+		return (1);
+	return (0);
 }

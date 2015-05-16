@@ -6,7 +6,7 @@
 #    By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/03 22:55:20 by ihermell          #+#    #+#              #
-#    Updated: 2015/05/12 22:54:54 by ihermell         ###   ########.fr        #
+#    Updated: 2015/05/16 13:10:07 by ihermell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,9 @@ SRC_NAME_LEX = lexer.c \
 			  ../token/new_token_list.c \
 			  ../token/push_token_list.c \
 			  ../token/push_back_token_list.c \
-			  ../token/id_token_max.c \
-			  ../token/print_token_list.c \
-			  ../token/divide_token_list.c \
+			  ../token/token_to_priority.c \
+			  ../token/max_priority_token.c \
+			  ../token/head_token_list.c \
 			  ../token/free_token_list.c \
 			  \
 			  state_flows/default_state_flow.c \
@@ -57,6 +57,7 @@ SRC_NAME_LEX = lexer.c \
 			  state_flows/inhb_cmd_arg_state_flow.c \
 			  state_flows/backslash_state_flow.c \
 			  state_flows/and_operator_state_flow.c \
+			  state_flows/or_operator_state_flow.c \
 			  state_flows/subcommand_state_flow.c \
 			  \
 			  errors/e_syntax_error.c \
@@ -64,8 +65,7 @@ SRC_NAME_LEX = lexer.c \
 			  errors/e_unclosed_parenthesis.c
 
 SRC_NAME_PAR = parser.c \
-			   tree/new_tree.c \
-			   tree/join_trees.c \
+			   tree/new_btree.c \
 			   tree/print_tree.c
 
 SRC_LEX		= $(addprefix $(SRC_DIR_LEX),$(SRC_NAME_LEX))
@@ -73,7 +73,7 @@ SRC_PAR		= $(addprefix $(SRC_DIR_PAR), $(SRC_NAME_PAR))
 
 SRC			= $(SRC_LEX)
 SRC			+= $(SRC_PAR)
-SRC			+= main.c
+SRC			+= lex_and_parse.c main.c
 
 OBJ_DIR		= obj/
 OBJ_NAME	= $(SRC_NAME_LEX:.c=.o)

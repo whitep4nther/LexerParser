@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_token_list.c                                  :+:      :+:    :+:   */
+/*   new_btree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/16 12:21:23 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/16 12:22:51 by ihermell         ###   ########.fr       */
+/*   Created: 2015/05/16 12:16:33 by ihermell          #+#    #+#             */
+/*   Updated: 2015/05/16 12:17:07 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <token.h>
+#include <btree.h>
 
-void			free_token_list(t_token *tk_list)
+t_btree			*new_btree(t_token *tk)
 {
-	t_token		*tmp;
-	
-	while (tk_list)
-	{
-		tmp = tk_list->next;
-		free(tk_list->value);
-		free(tk_list);
-		tk_list = tmp;
-	}
+	t_btree		*new;
+
+	new = (t_btree*)malloc(sizeof(t_btree));
+	new->tk = tk;
+	new->left = NULL;
+	new->right = NULL;
+	return (new);
 }

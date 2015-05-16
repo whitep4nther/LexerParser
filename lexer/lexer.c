@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 00:02:29 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/11 23:56:25 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/16 13:07:19 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ t_token			*lex(char *str)
 	tk_list = NULL;
 	lexer = init_lexer(str);
 	while ((token = next_token(str, lexer)) != NULL)
-		push_token_list(token, &tk_list);
+		push_back_token_list(token, &tk_list);
 	return (tk_list);
 }

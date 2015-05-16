@@ -1,76 +1,45 @@
-#include <parser.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/16 12:03:33 by bsautron          #+#    #+#             */
+/*   Updated: 2015/05/16 13:25:04 by ihermell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int	only_type_one(t_token *tk)
+#include <lexer_parser.h>
+
+
+t_btree			*parse(t_token *tk_list)
 {
-	while (tk)
+	t_btree		*tree;
+	t_token		*node;
+	t_token		*left_tk_list;
+	t_token		*right_tk_list;
+
+	node = max_priority_token(tk_list);
+	if (!node)
 	{
-		if (tk->type > 1)
-			return (0);
-		tk = tk->next;
-	}
-	return (1);
-}
-
-static void	parse_rec(t_tree **tree, t_token *tk_list)
-{
-	t_token		**sub_tk;
-	t_token		*tmp;
-	int			id;
-	int			i;
-
-	if (tk_list)
-	{
-		id = id_token_max(tk_list);
-		i = 0;
-		while (i++ < id)
-			tk_list = tk_list->next;
-		sub_tk = divide_token_list(&tk_list);
-
-		tmp = new_token_list(tk_list->value, tk_list->type);
-		if (only_type_one(tk_list))
-		{
-			tk_list = tk_list->prev;
-			while (tk_list)
-			{
-				push_back_token_list(new_token_list(tk_list->value, tk_list->type), &tmp);
-				tk_list = tk_list->prev;
-			}
-			*tree = new_tree(tmp);
-		}
+		if (tk_list && tk_list->type == TK_SUBCOMMAND)
+			tree = lex_and_parse(tk_list->value);
 		else
-		{
-			*tree = new_tree(tmp);
-			parse_rec(&(*tree)->tr_left, sub_tk[0]);
-			parse_rec(&(*tree)->tr_right, sub_tk[1]);
-		}
-		(void)only_type_one;
-		//		{
-		//			tk_list = tk_list->next;
-		//			while (tk_list)
-		//			{
-		//				(*tree)->cmd = ft_strjoin((*tree)->cmd, tk_list->value);
-		//				tk_list = tk_list->next;
-		//			}
-		//		}
-		//if (sub_tk[0])
-		//	join_trees(tree, new_tree(sub_tk[0]->value), LEFT);
-		//	if (sub_tk[1])
-		//			join_trees(tree, new_tree(sub_tk[1]->value), RIGHT);
+			tree = new_btree(tk_list);
+		return (tree);
 	}
-}
-
-t_tree		*parser(t_token *tk_list)
-{
-	t_tree		*tree;
-
-	tree = NULL;
-	dprintf(1, "%s\n", "---print de la listes des tokens---");
-	print_token_list(tk_list);
-	dprintf(1, "%s\n", "");
-	parse_rec(&tree, tk_list);
-
-	dprintf(1, "%s\n", "---print de l'arbre---");
-	print_tree(tree, POSTFIXE);
-	free_token_list(&tk_list);
+	else
+		tree = new_btree(node);
+	left_tk_list = head_token_list(node->prev);
+	right_tk_list = node->next;
+	if (node->prev)
+		node->prev->next = NULL;
+	if (node->next)
+		node->next->prev = NULL;
+	node->next = NULL;
+	node->prev = NULL;
+	tree->left = parse(left_tk_list);
+	tree->right = parse(right_tk_list);
 	return (tree);
 }

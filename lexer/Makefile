@@ -6,7 +6,7 @@
 #    By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/03 22:55:20 by ihermell          #+#    #+#              #
-#    Updated: 2015/05/12 22:54:54 by ihermell         ###   ########.fr        #
+#    Updated: 2015/05/16 13:11:12 by ihermell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC_NAME	= main.c \
 			  token/push_to_token.c \
 			  token/clear_token.c \
 			  ../token/push_token_list.c \
+			  ../token/push_back_token_list.c \
 			  ../token/new_token_list.c \
 			  \
 			  state_flows/default_state_flow.c \
@@ -51,6 +52,7 @@ SRC_NAME	= main.c \
 			  state_flows/inhb_cmd_arg_state_flow.c \
 			  state_flows/backslash_state_flow.c \
 			  state_flows/and_operator_state_flow.c \
+			  state_flows/or_operator_state_flow.c \
 			  state_flows/subcommand_state_flow.c \
 			  \
 			  errors/e_syntax_error.c \
