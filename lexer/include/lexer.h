@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 00:02:22 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/16 13:14:56 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/18 21:44:00 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 # include "libft.h"
 # include "token.h"
+
+# define STATUS_OK 0
+# define STATUS_ERROR 1
 
 # define NB_STATE_FLOWS 7
 
@@ -61,6 +64,7 @@ struct					s_lexer
 	char				token[1024];
 	int					token_length;
 	int					depth;
+	int					status;
 	t_state				*state;
 	t_state_flow		*state_flows;
 };

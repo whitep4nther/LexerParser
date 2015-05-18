@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 00:23:28 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/12 00:52:52 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/18 21:36:03 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_token			*next_token(char *str, t_lexer *lexer)
 			lexer);
 		if (token)
 			return (token);
-		else if (c == '\0')
+		else if (c == '\0' || lexer->error)
 			return (NULL);
 	}
 	return (NULL);

@@ -6,14 +6,14 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/16 12:03:33 by bsautron          #+#    #+#             */
-/*   Updated: 2015/05/16 13:25:04 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/18 21:49:39 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lexer_parser.h>
 
 
-t_btree			*parse(t_token *tk_list)
+t_btree			*parse(t_token *tk_list, char **error)
 {
 	t_btree		*tree;
 	t_token		*node;
@@ -24,7 +24,8 @@ t_btree			*parse(t_token *tk_list)
 	if (!node)
 	{
 		if (tk_list && tk_list->type == TK_SUBCOMMAND)
-			tree = lex_and_parse(tk_list->value);
+			if (!(tree = lex_and_parse(tk_list->value, error)) && *error)
+				return (NULL);
 		else
 			tree = new_btree(tk_list);
 		return (tree);
