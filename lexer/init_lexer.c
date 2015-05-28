@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 00:08:46 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/18 21:44:09 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/22 21:44:30 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_lexer			*init_lexer(char *str)
 	lexer->token_length = 0;
 	lexer->depth = 0;
 	lexer->status = STATUS_OK;
+	lexer->state = NULL;
 	push_state(STATE_DEFAULT, lexer);
 	init_state_flow(lexer);
 	return (lexer);

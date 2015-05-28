@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 01:46:27 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/18 21:44:23 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/19 14:04:06 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,5 @@ t_token			*e_syntax_error(t_lexer *lexer)
 	ft_putstr_fd(" (state ", 2);
 	ft_putnbr_fd(lexer->state->id, 2);
 	ft_putstr_fd(")\n", 2);
-	if (lexer->pos > 3)
-		ft_putendl_fd(lexer->str + lexer->pos - 3, 2);
 	return (NULL);
 }

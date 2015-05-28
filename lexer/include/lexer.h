@@ -6,7 +6,7 @@
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/11 00:02:22 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/18 21:44:00 by ihermell         ###   ########.fr       */
+/*   Updated: 2015/05/22 21:48:46 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ struct					s_lexer
 	t_state_flow		*state_flows;
 };
 
-t_token					*lex(char *str);
+t_token					*lex(char *str, int *status);
 
 t_lexer					*init_lexer();
+void					free_lexer(t_lexer *lexer);
 t_token					*next_token(char *str, t_lexer *lexer);
 
 int						char_to_category(char c);
@@ -105,6 +106,7 @@ t_token					*e_unclosed_quote(t_lexer *lexer);
 t_token					*e_unclosed_parenthesis(t_lexer *lexer);
 
 t_state					*new_state_list(t_estate state);
+void					free_state_list(t_state *state_list);
 void					pop_state_list(t_state **state_list);
 void					push_state_list(t_state *state, t_state **state_list);
 

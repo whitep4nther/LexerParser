@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_state.c                                       :+:      :+:    :+:   */
+/*   free_state_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihermell <ihermell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/11 06:03:29 by ihermell          #+#    #+#             */
-/*   Updated: 2015/05/19 14:32:33 by ihermell         ###   ########.fr       */
+/*   Created: 2015/05/19 14:22:27 by ihermell          #+#    #+#             */
+/*   Updated: 2015/05/19 14:32:59 by ihermell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include <lexer.h>
 
-void			push_state(t_estate state, t_lexer *lexer)
+void		free_state_list(t_state *state_list)
 {
-	push_state_list(new_state_list(state), &lexer->state);
+	t_state	*tmp;
+
+	while (state_list)
+	{
+		tmp = state_list->next;
+		free(state_list);
+		state_list = tmp;
+	}
 }
